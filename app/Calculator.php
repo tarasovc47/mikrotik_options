@@ -5,11 +5,11 @@ class Calculator
     public $hexRAW = null; // неупорядоченный шестнадцатичный массив
     public $decRAW = null; // неупорядоченный десятичный массив
 
-    public function __construct($str)
+    public function calc($str)
     {
         $this->hexRAW = str_split($str, 2); // разрезаем сырые данные на неупорядоченный массив по 2 символа
         $waste = array_shift($this->hexRAW); //костыль, убирающий 0x в начале
-        $this->decArray($this->hexRAW); // конвертируем неупорядоченный массив hex в десятичные значения
+        $this->toDecArray($this->hexRAW); // конвертируем неупорядоченный массив hex в десятичные значения
     }
     public function calcMask($arr) // высчитываем маску, отдаёт число
     {
@@ -19,7 +19,7 @@ class Calculator
     /**
      * @param $this
      */
-    public function decArray($hexRAW)  // преобразуем неупорядоченный массив из шестнадцатеричных в неупорядоченный десятичный
+    public function toDecArray($hexRAW)  // преобразуем неупорядоченный массив из шестнадцатеричных в неупорядоченный десятичный
     {
         function convert($raw) // функция конвертации
         {
